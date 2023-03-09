@@ -1,12 +1,12 @@
-const express = required('express');
+const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const route = express.Router();
-const {User, Product} = require('../model');
+const {User, Product} = require('../model/index.js');
 const user = new User();
 const product = new Product();
 
-route.get('^/&|/node', (req, res)=>{
+route.get('^/&|/Capstone project', (req, res)=>{
     res.status(200).sendFile(path.join(_dirname, '../view/index.html'));
 })
 
@@ -42,7 +42,7 @@ route.get('/product/:id',(req, res)=> {
     product.fetchProduct(req, res);
 })
 
-route.post('/products',bodyParser.json(),(req, res)=>{
+route.post('/product',bodyParser.json(),(req, res)=>{
     product.addProduct(req,res); 
 })
 

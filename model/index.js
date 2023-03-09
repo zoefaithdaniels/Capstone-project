@@ -14,8 +14,10 @@ class User {
         emailAdd,
         userPass,
         userRole,
-        userProfile
-        FROM Users WHERE emailAdd = ${emailAdd}; 
+        userProfile,
+        cellphoneNumber,
+        joinDate
+        FROM USERS WHERE emailAdd = ${emailAdd}; 
         `
         db.query(strQry, async (err, data) => {
             if(err) throw err;
@@ -57,8 +59,10 @@ class User {
         gender,
         emailAdd,
         userRole,
-        userProfile
-        FROM Users;
+        userProfile,
+        cellphoneNumber,
+        joinDate
+        FROM USERS;
         `
         db.query(strQry, (err, data)=> {
             if(err) throw err;
@@ -74,8 +78,10 @@ class User {
         gender,
         emailAdd,
         userRole,
-        userProfile
-        FROM Users
+        userProfile,
+        cellphoneNumber,
+        joinDate
+        FROM USERS
         WHERE userID = ?;
         `
         db.query(strQry, [req.params.id] ,(err, data)=> {
@@ -97,7 +103,7 @@ class User {
         }
         
         const strQry =
-        `INSERT INTO Users
+        `INSERT INTO USERS
         SET ?;`;
         db.query(strQry, [detail], (err)=> {
             if(err) {
@@ -137,13 +143,17 @@ class User {
     deleteUser(req, res) {
         const strQry = 
         `
-        DELETE FROM Users
+        DELETE FROM USERS
         WHERE userID = ?;
         `;
         
         db.query(strQry,[req.params.id], 
             (err)=>{
-            if(err) throw err;
+            // if(err) throw err;
+            if(err) {
+
+                console.log(err)
+            }
             res.status(200).json( {msg: 
                 "A record was removed from a database"} );
         })    
@@ -152,7 +162,7 @@ class User {
     
         class Product {
             fetchProducts(req, res) {
-                const strQry = `SELECT id, prodName, prodDescription, category, price, prodQuantity, imgURL
+                const strQry = `SELECT prodID, prodName, prodDes, category, price, prodQuantity, imgURL
                 FROM Products;`;
                 db.query(strQry, (err, results)=> {
                     if(err) throw err;
@@ -160,7 +170,7 @@ class User {
                 });
             }
             fetchProduct(req, res) {
-                const strQry = `SELECT id, prodName, prodDescription, category, price, prodQuantity, imgURL
+                const strQry = `SELECT prodID, prodName, prodDes, category, price, prodQuantity, imgURL
                 FROM Products
                 WHERE id = ?;`;
                 db.query(strQry, [req.params.id], (err, results)=> {
@@ -208,10 +218,10 @@ class User {
                 const strQry = 
                 `
                 DELETE FROM Products
-                WHERE id = ?;
+                WHERE prodID = ?;
                 `;
                 db.query(strQry,[req.params.id], (err)=> {
-                    if(err) res.status(400).json({err: "The record was not found."});
+                    if(err) throw err;
                     res.status(200).json({msg: "A product was deleted."});
                 })
             }
