@@ -172,7 +172,7 @@ class User {
             fetchProduct(req, res) {
                 const strQry = `SELECT prodID, prodName, prodDes, category, price, prodQuantity, imgURL
                 FROM Products
-                WHERE id = ?;`;
+                WHERE prodID= ?;`;
                 db.query(strQry, [req.params.id], (err, results)=> {
                     if(err) throw err;
                     res.status(200).json({results: results})
@@ -201,7 +201,7 @@ class User {
                 `
                 UPDATE Products
                 SET ?
-                WHERE id = ?
+                WHERE ProdID = ?
                 `;
                 db.query(strQry,[req.body, req.params.id],
                     (err)=> {
