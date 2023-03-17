@@ -1,12 +1,12 @@
 <template>
-    <div>
 
-    </div>
+    <SingleProduct/>
 </template>
 
 <script>
+import SingleProduct from '../components/SingleProduct.vue'
     export default {
-        
+        components: {SingleProduct}
     }
 </script>
 

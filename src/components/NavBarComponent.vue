@@ -20,13 +20,13 @@
          <i class="fa-solid fa-cart-shopping"> </i><router-link to ="/Products">Products</router-link>
         </li>
         <li class="nav-item">
-         <i class="fa-solid fa-lock"></i> <router-link to ="/admin">Admin</router-link>
+         <i class="fa-solid fa-lock"></i> <router-link to ="/Admin">Admin</router-link>
         </li>
         <li class="nav-item">
-          <i class="fa-solid fa-user"></i> <router-link to ="/login">Login</router-link>
+          <i class="fa-solid fa-user"></i> <router-link to ="/Login">Login</router-link>
         </li>
         <li class="nav-item">
-          <i class="fa-solid fa-pen-to-square"> </i> <router-link to ="/register">Register</router-link>
+          <i class="fa-solid fa-pen-to-square"> </i> <router-link to ="/Register">Register</router-link>
         </li>   
         <li class="nav-item">
           <i class="fa-solid fa-phone"></i> <router-link to ="/Contact">Contact</router-link>

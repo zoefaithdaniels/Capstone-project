@@ -36,7 +36,11 @@ export default createStore({
     },
     setSpinner(state, value){
       state.showSpinner = value
+    },
+    setSingleProduct(state, value){
+      state.SingleProduct = value
     }
+    
   },
   actions: {
     async fetchUsers(context){
@@ -83,12 +87,11 @@ export default createStore({
         alert(err)
       }
   },
-    async SingleProducts(context){ 
-
-      const res = await axios.post(`${soccerbrokersURL}SingleProduct`)
+    async SingleProduct(context, id){ 
+      const res = await axios.get(`${soccerbrokersURL}product/${id}`,)
       const {results, err} = await res.data;
       if(results) {
-        context.commit('setSingleProducts', results)
+        context.commit('setProduct', results[0])
       }else{
         context.commit('setMessage', err)
       }

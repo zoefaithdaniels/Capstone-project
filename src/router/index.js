@@ -13,7 +13,12 @@ const routes = [
     component: () => import( '../views/AdminView.vue')
   },
   {
-    path: '/Product',
+    path: '/About',
+    name: 'About',
+    component: () => import( '../views/AboutView.vue')
+  },
+  {
+    path: '/Products',
     name: 'Products',
     component: () => import('../views/ProductView.vue')
   },
@@ -33,8 +38,8 @@ const routes = [
     component: () => import('../views/LoginView.vue')
   },
   {
-    path: '/SingleProduct',
-    name: 'Single Product',
+    path: '/SingleProduct/:id',
+    name: 'SingleProduct',
     component: () => import('../views/SingleProductView.vue')
   },
 ]

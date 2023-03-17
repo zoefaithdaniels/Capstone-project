@@ -17,8 +17,9 @@
                             <!-- <h5 class="card-title">{{ product.category }}</h5> -->
                             <h5 class="card-title">{{ product.price }}</h5>
                             <p class="card-text">{{product.prodDes}}</p>
-                            <button class="btn btn-primary">View Product</button> <button class="btn btn-primary">Add to Cart</button>
-                            <a href="./SingleProductView.vue"></a>
+                            <router-link :to="{name:'SingleProduct', params:{id:product.prodID}}" >
+                            <button class="btn btn-primary">View Product</button></router-link> 
+                            <button class="btn btn-primary">Add to Cart</button>
                         </div>
                     </div>
                 </div>
