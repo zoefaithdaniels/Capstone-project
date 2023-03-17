@@ -14,7 +14,10 @@
          <i class="fa-solid fa-house"></i> <router-link to ="/">Home</router-link>
         </li>
         <li class="nav-item">
-         <i class="fa-solid fa-cart-shopping"> </i><router-link to ="/products">Products</router-link>
+          <i class="fa-solid fa-users"></i> <router-link to ="/About">About Us</router-link>
+        </li>
+        <li class="nav-item">
+         <i class="fa-solid fa-cart-shopping"> </i><router-link to ="/Products">Products</router-link>
         </li>
         <li class="nav-item">
          <i class="fa-solid fa-lock"></i> <router-link to ="/admin">Admin</router-link>
@@ -30,8 +33,11 @@
         </li>   
       </ul>
       <form class="d-flex" role="search">
+        <button class="btn"><i class="fa-solid fa-heart"></i></button>
+        <button class="btn"><i class="fa-solid fa-cart-shopping"></i></button>
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
+
       </form>
     </div>
   </div>
@@ -45,19 +51,24 @@
 </script>
 
 <style  scoped>
+.btn{
+   color: rgb(80,201,227); 
+}
 .nav-item{
-    margin-left: 60px;
-    color: goldenrod;
+    margin-left: 50px;
+    color: rgb(80, 201, 227);
   }
   .navbar{
     background-color:black;
   }
-  nav a.router-link-exact-active {
-    color: white;
-  }
+  
   nav a {
     font-weight: bold;
     text-decoration: none;
+    color: #ebecef;
+  }
+  .navbar-brand{
+    color: white;
   }
 
 </style>
