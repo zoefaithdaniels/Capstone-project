@@ -1,7 +1,8 @@
 import { createStore } from 'vuex';
 import axios from 'axios';
-const soccerbrokersURL = 'https://soccer-brokersnod.onrender.com/';
-
+// const soccerbrokersURL = '  ';
+const soccerbrokersURL = 'http://localhost:4000/';
+import router from '../router/index'
 
 export default createStore({
   state: {
@@ -25,7 +26,7 @@ export default createStore({
       state.user = value
     },
     setProducts(state, values){
-      state.Products = values
+      state.products = values
     },
     setProduct(state, value){
       state.product = value
@@ -48,7 +49,53 @@ export default createStore({
       }
 
     },
+    async fetchProducts(context){ 
+
+      const res = await axios.get(`${soccerbrokersURL}products`)
+      const {results, err} = await res.data;
+      if(results) {
+        context.commit('setProducts', results)
+        context.commit('setSpinner',false)
+      }else{
+        context.commit('setMessage', err)
+        context.commit('setSpinner',true)
+      }
+    },
+    async Register(context, payload){ 
+
+        const res = await axios.post(`${soccerbrokersURL}register`, payload)
+        const {msg, err} = await res.data;
+        if(msg) {
+          router.push('/login')
+        }
+        else if(err) {
+          alert(err)
+        }
+    },
+    async Login(context, payload){ 
+
+      const res = await axios.patch(`${soccerbrokersURL}Login`, payload)
+      const {msg, err} = await res.data;
+      if(msg) {
+        router.push('/home')
+      }
+      else if(err) {
+        alert(err)
+      }
   },
-  modules: {
-  }
-})
+    async SingleProducts(context){ 
+
+      const res = await axios.post(`${soccerbrokersURL}SingleProduct`)
+      const {results, err} = await res.data;
+      if(results) {
+        context.commit('setSingleProducts', results)
+      }else{
+        context.commit('setMessage', err)
+      }
+    }
+  },
+modules: {
+
+}
+}
+)
